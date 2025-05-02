@@ -1,6 +1,6 @@
 # UlfaCollection
 
-MyApp adalah aplikasi e-commerce baju.
+ini aplikasi e-commerce baju.
 
 ## 🚀 Fitur
 
