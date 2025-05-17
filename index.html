@@ -45,160 +45,112 @@
     </style>
   </head>
   <body class="bg-gray-100 text-gray-800 font-inter">
-    <!-- Navbar -->
-    <div
-      class="bg-white"
-      x-data="{ 
-           mobileMenuOpen: false,
-           initScrollObserver() {
-             const observerOptions = {
-               root: null,
-               rootMargin: '0px',
-               threshold: 0.1
-             };
-             
-             const observer = new IntersectionObserver((entries) => {
-               entries.forEach(entry => {
-                 if (entry.isIntersecting) {
-                   entry.target.classList.remove('translate-y-hidden', 'translate-x-left-hidden', 'translate-x-right-hidden', 'scale-hidden');
-                   entry.target.classList.add('opacity-100');
-                   observer.unobserve(entry.target);
-                 }
-               });
-             }, observerOptions);
-             
-             document.querySelectorAll('.scroll-animation').forEach(el => {
-               observer.observe(el);
-             });
-           }
-         }"
-      x-init="initScrollObserver()"
-    >
-      <header class="absolute inset-x-0 top-0 z-50">
-        <nav
-          class="flex py-12 items-center justify-between p-6 lg:px-8 animate-fade-in"
-          aria-label="Global"
-        >
-          <div class="flex lg:flex-1">
-            <!-- <a
-              href="#"
-              class="-m-1.5 p-1.5 transition hover:scale-105 duration-300"
-            >
-              <span class="sr-only">Ulfa Collection</span>
-              <img
-                class="h-8 w-auto"
-                src="/src/img/img_logo.png"
-                alt="Ulfa Collection"
-              /> 
-            </a> -->
-          </div>
-          <div class="flex lg:hidden">
-            <button
-              @click="mobileMenuOpen = !mobileMenuOpen"
-              type="button"
-              class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-white hover:bg-primary/90 transition-colors duration-300"
-            >
-              <span class="sr-only">Open main menu</span>
-              <svg
-                class="size-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                aria-hidden="true"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-                />
-              </svg>
-            </button>
-          </div>
-          <div class="hidden lg:flex lg:gap-x-24">
-            <a
-              href="#"
-              class="text-md font-semibold text-white hover:text-orange-200 transition-colors duration-300"
-              >Home</a
-            >
-            <a
-              href="#product"
-              class="text-md font-semibold text-white hover:text-orange-200 transition-colors duration-300"
-              >Product</a
-            >
-            <div
-              class="text-md font-semibold text-white hover:text-orange-200 transition-colors duration-300"
-            >
-              <img
-                class="h-8 w-auto"
-                src="/src/img/img_logo.png"
-                alt="Ulfa Collection"
-              />
-            </div>
-            <a
-              href="#"
-              class="text-md font-semibold text-white hover:text-orange-200 transition-colors duration-300"
-              >Contact Us</a
-            >
-            <a
-              href="#"
-              class="text-md font-semibold text-white hover:text-orange-200 transition-colors duration-300"
-              >About</a
-            >
-          </div>
-          <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-            <a
-              href="#"
-              class="group inline-flex items-center text-sm font-semibold text-white transition-all duration-300"
-            >
-              Log in
-              <span
-                class="ml-1 inline-block transition-transform duration-300 group-hover:translate-x-1"
-                aria-hidden="true"
-                >&rarr;</span
-              >
-            </a>
-          </div>
-        </nav>
-
-        <!-- Mobile menu -->
+    <!-- Floating Customer Care Button with Hover Toast -->
+    <div class="fixed bottom-6 right-6 z-50">
+      <div class="relative group flex flex-col items-end">
+        <!-- Toast -->
         <div
-          class="lg:hidden"
-          x-show="mobileMenuOpen"
-          x-transition:enter="transition ease-out duration-300"
-          x-transition:enter-start="opacity-0 translate-x-full"
-          x-transition:enter-end="opacity-100 translate-x-0"
-          x-transition:leave="transition ease-in duration-200"
-          x-transition:leave-start="opacity-100 translate-x-0"
-          x-transition:leave-end="opacity-0 translate-x-full"
+          class="mb-2 bg-primary/80 text-white text-sm px-4 py-2 opacity-0 group-hover:opacity-100 translate-y-1 group-hover:translate-y-0 transition-all duration-300 ease-in-out"
         >
-          <div
-            class="fixed inset-0 z-40 bg-black bg-opacity-25"
-            @click="mobileMenuOpen = false"
-          ></div>
+          Need help? Click here!
+        </div>
 
-          <div
-            class="fixed inset-y-0 right-0 z-50 w-full max-w-sm bg-white px-6 py-6 overflow-y-auto sm:ring-1 sm:ring-gray-900/10"
+        <!-- Button -->
+        <a
+          href="#"
+          class="bg-primary text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition-all duration-300 ease-in-out"
+          title="Reach us on WhatsApp"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="size-6"
           >
-            <div class="flex items-center justify-between">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 0 1-.825-.242m9.345-8.334a2.126 2.126 0 0 0-.476-.095 48.64 48.64 0 0 0-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0 0 11.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155"
+            />
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <div x-data="{ mobileMenuOpen: false }">
+      <!-- Navbar 1 - Logo, Search, Login -->
+      <div class="bg-primary shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex justify-between items-center h-16">
+            <!-- Logo for desktop and mobile -->
+            <div class="flex items-center">
               <a
                 href="#"
-                class="-m-1.5 p-1.5 transition hover:scale-105 duration-300"
+                class="p-1.5 hover:scale-105 transform transition-transform duration-300"
               >
+                <span class="sr-only">Ulfa Collection</span>
                 <img
                   class="h-8 w-auto"
-                  src="/src/img/img_logo_primary.png"
+                  src="/src/img/img_logo.png"
                   alt="Ulfa Collection"
                 />
               </a>
-              <button
-                @click="mobileMenuOpen = false"
-                type="button"
-                class="-m-2.5 rounded-md p-2.5 text-primary hover:bg-gray-50 transition-colors duration-300"
+            </div>
+
+            <!-- Search Bar - Only visible on desktop -->
+            <div class="hidden md:block flex-1 max-w-md mx-6">
+              <div class="relative">
+                <div
+                  class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"
+                >
+                  <svg
+                    class="h-5 w-5 text-gray-400"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                </div>
+                <input
+                  type="text"
+                  class="block w-full pl-10 pr-3 py-2 border border-gray-400 leading-1 bg-primary placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                  placeholder="Search products..."
+                />
+              </div>
+            </div>
+
+            <!-- Login/Register - Only visible on desktop -->
+            <div class="hidden md:flex items-center">
+              <a
+                href="#"
+                class="group inline-flex items-center text-md font-semibold text-white hover:white/80 transition-colors duration-300"
               >
-                <span class="sr-only">Close menu</span>
+                Log in | Register
+                <span
+                  class="ml-1 inline-block transform transition-transform duration-300 group-hover:translate-x-1"
+                  aria-hidden="true"
+                  >&rarr;</span
+                >
+              </a>
+            </div>
+
+            <!-- Mobile menu button -->
+            <div class="flex md:hidden">
+              <button
+                @click="mobileMenuOpen = !mobileMenuOpen"
+                type="button"
+                class="inline-flex items-center justify-center p-2 rounded-md text-white hover:text-gray-300 hover:bg-primary/70 focus:bg-primary/70 transition-colors duration-300"
+              >
+                <span class="sr-only">Open main menu</span>
                 <svg
-                  class="size-6"
+                  class="h-6 w-6"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke-width="1.5"
@@ -208,56 +160,207 @@
                   <path
                     stroke-linecap="round"
                     stroke-linejoin="round"
-                    d="M6 18 18 6M6 6l12 12"
+                    d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
                   />
                 </svg>
               </button>
             </div>
-            <div class="mt-6">
-              <div class="space-y-2">
-                <a
-                  href="#"
-                  class="block px-3 py-2 rounded-md text-base font-semibold text-primary hover:bg-gray-50 transition-colors duration-300"
-                  >Home</a
+          </div>
+        </div>
+      </div>
+
+      <!-- Promo Sale - Between two navbars -->
+      <div
+        class="w-full h-auto bg-primary/90 flex justify-center items-center px-6 py-4 sm:py-4 sm:px-6"
+      >
+        <h2 class="font-light text-lg text-white text-center sm:text-left">
+          VOUCHER ALL PRODUCT DISCOUNT 20% WILL BE EXPIRE ON 30 APRIL 2025 –
+          <a
+            href="#"
+            class="text-orange-400 underline underline-offset-2 font-semibold hover:text-orange-500 transition-colors duration-300"
+          >
+            REDEEM NOW!
+          </a>
+        </h2>
+      </div>
+
+      <!-- Navbar 2 - Navigation Menu -->
+      <div class="bg-primary shadow">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="hidden md:flex justify-center">
+            <nav class="flex space-x-12">
+              <a
+                href="#"
+                class="px-3 py-4 text-lg font-thin text-white hover:text-orange-200 transition-colors duration-300"
+                >Home</a
+              >
+              <a
+                href="#product"
+                class="px-3 py-4 text-lg font-thin text-white hover:text-orange-200 transition-colors duration-300"
+                >Product</a
+              >
+              <a
+                href="#"
+                class="px-3 py-4 text-lg font-thin text-white hover:text-orange-200 transition-colors duration-300"
+                >Categories</a
+              >
+              <a
+                href="#"
+                class="px-3 py-4 text-lg font-thin text-white hover:text-orange-200 transition-colors duration-300"
+                >Contact Us</a
+              >
+              <a
+                href="#"
+                class="px-3 py-4 text-lg font-thin text-white hover:text-orange-200 transition-colors duration-300"
+                >About</a
+              >
+            </nav>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile menu -->
+      <div
+        class="md:hidden fixed inset-0 z-50"
+        x-show="mobileMenuOpen"
+        x-transition:enter="transition ease-out duration-300"
+        x-transition:enter-start="opacity-0"
+        x-transition:enter-end="opacity-100"
+        x-transition:leave="transition ease-in duration-200"
+        x-transition:leave-start="opacity-100"
+        x-transition:leave-end="opacity-0"
+      >
+        <!-- Backdrop -->
+        <div
+          class="fixed inset-0 bg-black/25"
+          @click="mobileMenuOpen = false"
+        ></div>
+
+        <!-- Mobile menu content -->
+        <div
+          class="fixed inset-y-0 right-0 w-full max-w-sm bg-white shadow-xl overflow-y-auto transform transition-transform duration-300"
+          x-show="mobileMenuOpen"
+          x-transition:enter="transition ease-out duration-300"
+          x-transition:enter-start="translate-x-full"
+          x-transition:enter-end="translate-x-0"
+          x-transition:leave="transition ease-in duration-200"
+          x-transition:leave-start="translate-x-0"
+          x-transition:leave-end="translate-x-full"
+        >
+          <div class="flex items-center justify-between p-6">
+            <a
+              href="#"
+              class="p-1.5 hover:scale-105 transform transition-transform duration-300"
+            >
+              <img
+                class="h-8 w-auto"
+                src="/api/placeholder/200/80"
+                alt="Ulfa Collection"
+              />
+            </a>
+            <button
+              @click="mobileMenuOpen = false"
+              type="button"
+              class="rounded-md p-2.5 text-red-600 hover:text-red-700 hover:bg-red-200 transition-colors duration-300"
+            >
+              <span class="sr-only">Close menu</span>
+              <svg
+                class="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M6 18 18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+          </div>
+
+          <!-- Mobile Search -->
+          <div class="px-6 mt-4">
+            <div class="relative">
+              <div
+                class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"
+              >
+                <svg
+                  class="h-5 w-5 text-gray-400"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
                 >
-                <a
-                  href="#product"
-                  class="block px-3 py-2 rounded-md text-base font-semibold text-primary hover:bg-gray-50 transition-colors duration-300"
-                  >Product</a
-                >
-                <a
-                  href="#"
-                  class="block px-3 py-2 rounded-md text-base font-semibold text-primary hover:bg-gray-50 transition-colors duration-300"
-                  >Contact Us</a
-                >
-                <a
-                  href="#"
-                  class="block px-3 py-2 rounded-md text-base font-semibold text-primary hover:bg-gray-50 transition-colors duration-300"
-                  >About</a
-                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
               </div>
-              <div class="mt-6 border-t border-gray-200 pt-6">
-                <a
-                  href="#"
-                  class="block px-3 py-2.5 rounded-md text-base font-semibold text-orange-500 hover:bg-gray-50 transition-colors duration-300"
-                  >Log in
-                  <span
-                    aria-hidden="true"
-                    class="ms-3 transition-all duration-300 group-hover:ms-6"
-                    >&rarr;</span
-                  ></a
+              <input
+                type="text"
+                class="block w-full pl-10 pr-3 py-2 border border-gray-300 bg-white placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary sm:text-sm"
+                placeholder="Search products..."
+              />
+            </div>
+          </div>
+
+          <!-- Mobile Navigation -->
+          <div class="px-6 mt-6">
+            <div class="space-y-1">
+              <a
+                href="#"
+                class="block px-3 py-2 rounded-md text-base font-semibold text-primary hover:bg-gray-50 transition-colors duration-300"
+                >Home</a
+              >
+              <a
+                href="#product"
+                class="block px-3 py-2 rounded-md text-base font-semibold text-primary hover:bg-gray-50 transition-colors duration-300"
+                >Product</a
+              >
+              <a
+                href="#"
+                class="block px-3 py-2 rounded-md text-base font-semibold text-primary hover:bg-gray-50 transition-colors duration-300"
+                >Categories</a
+              >
+              <a
+                href="#"
+                class="block px-3 py-2 rounded-md text-base font-semibold text-primary hover:bg-gray-50 transition-colors duration-300"
+                >Contact Us</a
+              >
+              <a
+                href="#"
+                class="block px-3 py-2 rounded-md text-base font-semibold text-primary hover:bg-gray-50 transition-colors duration-300"
+                >About</a
+              >
+            </div>
+
+            <!-- Mobile Login/Register -->
+            <div class="mt-6 border-t border-gray-200 pt-4">
+              <a
+                href="#"
+                class="block px-3 py-2.5 rounded-md text-base font-semibold text-orange-500 hover:bg-gray-50 transition-colors duration-300 group"
+              >
+                Log in | Register
+                <span
+                  aria-hidden="true"
+                  class="ml-1 inline-block transition-transform duration-300 group-hover:translate-x-1"
+                  >&rarr;</span
                 >
-              </div>
+              </a>
             </div>
           </div>
         </div>
-      </header>
+      </div>
     </div>
 
     <!-- Jumbotron -->
     <section
       id="hero"
-      class="relative bg-cover bg-center bg-no-repeat h-screen px-6 sm:px-12 lg:px-24 font-poppins flex items-center justify-center"
+      class="relative bg-cover top-0 bg-center bg-no-repeat h-screen px-6 sm:px-12 lg:px-24 font-poppins flex items-center justify-center"
       style="background-image: url('/src/img/jumbotron_img.png')"
     >
       <div
@@ -273,8 +376,8 @@
         <p
           class="text-lg sm:text-xl mb-10 text-white/90 animate-fade-in animation-delay-300"
         >
-          Koleksi eksklusif dari Ulfa Collection untuk kamu yang ingin tampil
-          anggun setiap hari.
+          Exclusive collection from Ulfa Collection for those of you who want to
+          look elegant every day.
         </p>
         <div
           class="flex flex-col sm:flex-row justify-center gap-4 animate-fade-in animation-delay-500"
@@ -283,20 +386,20 @@
             href="#"
             class="inline-block border border-orange-500 text-white bg-orange-500 font-semibold px-6 py-3 hover:bg-orange-600 transition-colors duration-300 hover:scale-105 transform"
           >
-            Lihat Koleksi
+            View Collection
           </a>
           <a
             href="#"
             class="inline-block border border-orange-300 text-orange-300 font-semibold px-6 py-3 hover:bg-white hover:text-primary transition-all duration-300 hover:scale-105 transform"
           >
-            Tentang Kami
+            About Us
           </a>
         </div>
       </div>
     </section>
 
     <!-- Popular Product -->
-    <section id="product" class="py-20 bg-white font-poppins h-auto">
+    <section id="product" class="py-20 bg-primary font-poppins h-auto">
       <div class="w-full px-4 sm:px-6 lg:px-8">
         <!-- Title Popular Product -->
         <h2
@@ -1097,6 +1200,7 @@
 
     <!-- Review Customers -->
     <section
+      id="reviewcustomers"
       class="bg-gradient-to-b from-teal-700 to-primary text-white py-20 px-6 md:px-16 font-inter"
     >
       <h2 class="text-center text-4xl font-libreBodoni mb-16">
@@ -1308,46 +1412,6 @@
         reserved.
       </div>
     </footer>
-
-    <!-- Script untuk toggle modal Login + animasi -->
-    <script>
-      const openBtn = document.getElementById("openLoginModal");
-      const closeBtn = document.getElementById("closeLoginModal");
-      const modal = document.getElementById("loginModal");
-      const modalBox = document.getElementById("loginModalBox");
-
-      openBtn.addEventListener("click", function (e) {
-        e.preventDefault();
-        modal.classList.remove("hidden");
-
-        // Delay agar animasi bisa aktif
-        setTimeout(() => {
-          modalBox.classList.remove("opacity-0", "scale-95");
-          modalBox.classList.add("opacity-100", "scale-100");
-        }, 10);
-      });
-
-      function closeModal() {
-        modalBox.classList.remove("opacity-100", "scale-100");
-        modalBox.classList.add("opacity-0", "scale-95");
-
-        // Tunggu animasi selesai, baru sembunyikan modal
-        setTimeout(() => {
-          modal.classList.add("hidden");
-        }, 300);
-      }
-
-      closeBtn.addEventListener("click", function (e) {
-        e.preventDefault();
-        closeModal();
-      });
-
-      window.addEventListener("click", function (e) {
-        if (e.target === modal) {
-          closeModal();
-        }
-      });
-    </script>
 
     <!-- Script for Carousel Customers -->
     <script>
